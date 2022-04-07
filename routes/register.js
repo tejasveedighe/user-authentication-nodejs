@@ -28,7 +28,11 @@ router.post("/", async (req, res) => {
 			email: req.body.email,
 		});
 		newUser.save();
-		res.render("register/success");
+		res.render("register/register", {
+			data: {
+				message: "Successfully registered",
+			},
+		});
 	}
 });
 
