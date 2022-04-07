@@ -8,10 +8,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-	let user = await userModel.find({
+	let user = await userModel.findOne({
 		username: req.body.username,
 	});
 	if (user) {
+		console.log(user);
 		res.render("register/register", {
 			data: {
 				message: "Username already exists",
