@@ -2,7 +2,9 @@ const router = require("express").Router();
 const userModel = require("../models/user");
 
 router.get("/", (req, res) => {
-	res.render("register/register");
+	res.render("register/register", {
+		data: { message: "", username: "", password: "", email: "" },
+	});
 });
 
 router.post("/", async (req, res) => {
@@ -10,7 +12,14 @@ router.post("/", async (req, res) => {
 		username: req.body.username,
 	});
 	if (user) {
-		res.render("register/exists");
+		res.render("register/register", {
+			data: {
+				message: "Username already exists",
+				username: req.body.username,
+				password: "",
+				email: req.body.email,
+			},
+		});
 	} else {
 		const newUser = new userModel({
 			username: req.body.username,
