@@ -8,15 +8,28 @@
 	</head>
 	<body>
 		<h1>Register</h1>
+		<h3><%= data.message %></h3>
 		<form action="/register" method="post">
 			<label for="username">Username:</label>
-			<input type="text" id="username" name="username" required />
+			<input
+				type="text"
+				id="username"
+				name="username"
+				value="<%= data.username %>"
+				required
+			/>
 
 			<label for="password">Password:</label>
 			<input type="password" id="password" name="password" required />
 
 			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required />
+			<input
+				type="email"
+				id="email"
+				name="email"
+				value="<%= data.email %>"
+				required
+			/>
 
 			<button type="submit">Register</button>
 			<a href="/">Login</a>
